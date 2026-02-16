@@ -54,21 +54,25 @@ FAQ Document (faq.txt)
 
 ## 📦 Installation
 
+### Setup Neo4j Database (Free)
+
+1. Go to [neo4j.com/cloud/aura-free](https://neo4j.com/cloud/aura-free)
+2. Sign up and create an AuraDB Free instance
+3. Save your **URI**, **Username**, and **Password** (you'll need these in environment variables)
+
+### Install Project
+
 1. **Clone/setup the project**
    ```bash
    cd Hybrid_RAG
    ```
-2.  **Create Neo4j Database (Free) **
-Go to neo4j.com/cloud/aura-free
-Sign up → Create AuraDB Free instance
-Save your URI, Username, Password
 
-3. **Install dependencies**
+2. **Install dependencies**
    ```bash
    pip install openai neo4j python-dotenv numpy
    ```
 
-4. **Configure environment variables** - Create `.env` file:
+3. **Configure environment variables** - Create `.env` file:
    ```env
    OPENAI_API_KEY=sk-...
    NEO4J_URI=bolt://localhost:7687
@@ -76,7 +80,7 @@ Save your URI, Username, Password
    NEO4J_PASSWORD=password
    ```
 
-5. **Prepare your FAQ** - Edit `faq.txt` with your knowledge base content (separate chunks with blank lines)
+4. **Prepare your FAQ** - Edit `faq.txt` with your knowledge base content (separate chunks with blank lines)
 
 ## 🚀 Usage
 
@@ -100,7 +104,28 @@ This will:
 to learn from data without explicit programming...
 ```
 
-## 📂 File Structure
+## � See Your Graph
+
+Open **Neo4j Browser** and run this query to visualize your knowledge graph:
+
+```cypher
+MATCH (n)-[r]->(m) RETURN n, r, m
+```
+
+You'll see something like:
+
+```
+(AI) ←──SUBSET_OF── (Machine Learning) ←──SUBSET_OF── (Deep Learning)
+ │                          │
+ CREATED_BY              USED_IN
+ │                          │
+ ▼                          ▼
+(Alan Turing)           (TensorFlow)──CREATED_BY──▶(Google)
+```
+
+This shows all entities and their relationships extracted from your FAQ.
+
+## �📂 File Structure
 
 | File | Purpose |
 |------|---------|
@@ -197,4 +222,3 @@ This project is provided as-is for educational and commercial use.
 ---
 
 **Questions?** Check the code comments in `app.py` for detailed implementation notes.
-
