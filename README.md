@@ -58,13 +58,17 @@ FAQ Document (faq.txt)
    ```bash
    cd Hybrid_RAG
    ```
+2.  **Create Neo4j Database (Free) **
+Go to neo4j.com/cloud/aura-free
+Sign up → Create AuraDB Free instance
+Save your URI, Username, Password
 
-2. **Install dependencies**
+3. **Install dependencies**
    ```bash
    pip install openai neo4j python-dotenv numpy
    ```
 
-3. **Configure environment variables** - Create `.env` file:
+4. **Configure environment variables** - Create `.env` file:
    ```env
    OPENAI_API_KEY=sk-...
    NEO4J_URI=bolt://localhost:7687
@@ -72,7 +76,7 @@ FAQ Document (faq.txt)
    NEO4J_PASSWORD=password
    ```
 
-4. **Prepare your FAQ** - Edit `faq.txt` with your knowledge base content (separate chunks with blank lines)
+5. **Prepare your FAQ** - Edit `faq.txt` with your knowledge base content (separate chunks with blank lines)
 
 ## 🚀 Usage
 
@@ -193,3 +197,4 @@ This project is provided as-is for educational and commercial use.
 ---
 
 **Questions?** Check the code comments in `app.py` for detailed implementation notes.
+
